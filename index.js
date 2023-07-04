@@ -39,7 +39,14 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
+app.use("/api/mahilex", async (req, res) => {
+  try {
+    res.status(200).json({ name: "mahilex", age: 30, currency: "USD" });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-app.listen("5000", () => {
+app.listen(process.env.PORT||5000, () => {
   console.log("Server is running on 5000 port");
 });
